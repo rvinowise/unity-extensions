@@ -34,5 +34,11 @@ public static partial class Unity_extension {
 
     }
 
+    public static void destroy(
+        this MonoBehaviour in_component
+    ) {
+        GameObject.Destroy(in_component.gameObject);
+    }
+
 }
 }

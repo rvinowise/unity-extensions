@@ -101,5 +101,17 @@ public static partial class Unity_extension
         );
     }
 
+    public static void set_z(
+        this Transform transform,
+        float in_z
+    ) {
+        Vector3 old_position = transform.localPosition;
+        transform.localPosition = new Vector3(
+            old_position.x,
+            old_position.y,
+            in_z
+        );
+    }
+
 
 }
