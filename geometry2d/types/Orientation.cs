@@ -62,7 +62,7 @@ public class Orientation {
     }
 
     public override bool Equals(object o) {
-        return this == o;
+        return this == (Orientation)o;
     }
     public override int GetHashCode() {
         return (position, rotation).GetHashCode();

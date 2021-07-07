@@ -37,7 +37,11 @@ public static partial class Unity_extension {
     public static void destroy(
         this MonoBehaviour in_component
     ) {
-        GameObject.Destroy(in_component.gameObject); //test
+        if (in_component.GetComponent<Pooled_object>() is Pooled_object pooled_object) {
+            pooled_object.destroy();
+        } else {
+            GameObject.Destroy(in_component.gameObject);
+        }
     }
 
 }
