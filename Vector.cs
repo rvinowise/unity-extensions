@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using rvinowise.unity.geometry2d;
 using UnityEngine;
 using rvinowise.unity.geometry2d.for_unmanaged;
 
@@ -22,6 +23,9 @@ public static partial class Unity_extension
     public static float to_dergees(this Vector2 in_direction) {
         return Mathf.Atan2(in_direction.y, in_direction.x) * Mathf.Rad2Deg;
     }
+    public static float to_dergees(this Vector3 in_direction) {
+        return Mathf.Atan2(in_direction.y, in_direction.x) * Mathf.Rad2Deg;
+    }
     public static Quaternion to_quaternion_OLD(this Vector2 in_direction) {
         return Quaternion.Euler(0f,0f,in_direction.to_dergees());
     }
@@ -42,6 +46,10 @@ public static partial class Unity_extension
     }
     public static float degrees_to(this Vector2 position, Vector2 in_aim) {
         Vector2 targetDirection = in_aim - position;
+        return targetDirection.to_dergees();
+    }
+    public static float degrees_to(this Vector3 position, Vector3 in_aim) {
+        Vector3 targetDirection = in_aim - position;
         return targetDirection.to_dergees();
     }
     public static Quaternion quaternion_to(this Vector2 position, Vector2 in_aim) {
@@ -88,8 +96,14 @@ public static partial class Unity_extension
 
         return result;
     }
-    
-    
+
+    public static Vector3 offset_in_direction(
+        this Vector3 vector,
+        float length,
+        Degree direction
+    ) {
+        return vector + direction.to_quaternion() * Vector3.right * length;
+    }
     
 }
 

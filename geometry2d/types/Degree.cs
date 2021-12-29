@@ -16,6 +16,9 @@ public struct Degree {
     public Degree(float in_degrees) {
         degrees = in_degrees;
     }
+
+    public static implicit operator float(Degree degree) => degree.degrees;
+    public static implicit operator Degree(float value) => new Degree(value);
     
     public Quaternion to_quaternion() {
         return Quaternion.Euler(0f,0f,degrees);
