@@ -15,7 +15,7 @@ public class Table:MonoBehaviour {
 
     private List<Table_cell> cells = new List<Table_cell>();
     private GridLayoutGroup layout_group;
-    
+
     public void init(ICircle stored_object) {
         canvas = GetComponent<Canvas>();
         layout_group = GetComponent<GridLayoutGroup>();
