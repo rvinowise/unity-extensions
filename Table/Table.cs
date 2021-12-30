@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 using rvinowise.unity.extensions;
 using System.Collections.Generic;
+using rvinowise.unity.ai.visuals;
+using UnityEngine.UI;
 
 namespace rvinowise.unity.ui.table {
 
@@ -12,9 +14,12 @@ public class Table:MonoBehaviour {
     private Canvas canvas;
 
     private List<Table_cell> cells = new List<Table_cell>();
-
-    void Awake() {
+    private GridLayoutGroup layout_group;
+    
+    public void init(ICircle stored_object) {
         canvas = GetComponent<Canvas>();
+        layout_group = GetComponent<GridLayoutGroup>();
+        layout_group.cellSize = new Vector2(stored_object.radius, stored_object.radius);
     }
     public void add_item(
         MonoBehaviour in_item
